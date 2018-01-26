@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace CustomLists
 {
-    public class Program
+   public class CustomList<T>
     {
-        static void Main(string[] args)
+        T value; 
+
+        public void Add(T value)
         {
 
         }
+
+        public void RemoveFromList(T value)
+        {
+
+        }
+
     }
 }
