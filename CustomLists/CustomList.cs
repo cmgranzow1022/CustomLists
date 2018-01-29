@@ -28,16 +28,15 @@ namespace CustomLists
 
         public void Add(T value)
         {
-           if( Count == capacity)
+           if(Count == capacity)
             {
                 MakeTempArray();
             }         
            else
             {
                 Array[Count] = value;
-           
             }    
-                 count++;         
+               count++;         
         }
 
         public void MakeTempArray()

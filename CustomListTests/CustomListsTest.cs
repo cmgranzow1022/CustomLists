@@ -23,11 +23,9 @@ namespace CustomListTests
             Assert.AreSame(customList.Count, 2); 
         }
 
-
         [TestMethod]
         public void Add_FourNums_FourNumsAddedToExistingList()
         {
-       
             //Arrange
             CustomList<int> customList = new CustomList<int>() { };
 
@@ -43,8 +41,7 @@ namespace CustomListTests
 
         [TestMethod]
         public void Add_TwoNumsToExistingList_VerifyCorrectIndexPosition()
-        {
-       
+        { 
             //Arrange
             CustomList<int> customList = new CustomList<int>() { 10, 20 };
 
@@ -59,7 +56,7 @@ namespace CustomListTests
         }
 
         [TestMethod]
-        public void Add_TwoNum_VerifyIndexPosition()
+        public void Add_TwoNum_VerifyZeroIndexPosition()
         {
             CustomList<int> customList = new CustomList<int>();
             //Arrange
@@ -71,7 +68,7 @@ namespace CustomListTests
             customList.Add(customListTwo);
 
             //Assert
-            Assert.AreEqual(customList.Array[1], 20);
+            Assert.AreEqual(customList.Array[0], 10);
         }
 
         [TestMethod]
@@ -127,21 +124,29 @@ namespace CustomListTests
             Assert.AreEqual(customList.Count, 8);
         }
 
+        [TestMethod]
+        public void Remove_OneInt_VerifyCountAfterRemovingOneIntFromExistingList()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 10, 20, 30, 40 };
 
+            //Act
+            customList.Remove(10);
 
-        //[TestMethod]
-        //public void RemoveFromList()
-        //{
-        //    CustomList<int> customList = new CustomList<int>() { 10, 20, 30, 40 };
-        //    Arrange
-        //    int testOne = 1;
+            //Assert
+            Assert.AreSame(customList.count, 3);
+        }
 
-        //    Act
-        //    customList.RemoveFromList();
-
-        //    Assert
-        //    Assert.AreSame(customList.count, 2);
-        //}
+        [TestMethod]
+        public void Remove_LastInt_VerifyIndexPositionAfterRemovingLastInt()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 10, 20, 30, 40 };
+            //Act
+            customList.Remove(30);
+            //Assert
+            Assert.AreSame(customList.Array[3], 40);
+        }
 
     }
 }
