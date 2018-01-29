@@ -18,28 +18,27 @@ namespace CustomLists
         //ctor
         public CustomList()
         {
+            count = 0;
             capacity = 5;
             Array = new T[capacity];
+            TempArray = new T[0];
         }
 
         //member methods&properties
 
-
-
         public void Add(T value)
         {
-           if( count > capacity / 2)
+           if( Count == capacity)
             {
                 MakeTempArray();
             }         
-            else
+           else
             {
-                Array[count] = value;
-                count++;
-            }              
-            
+                Array[Count] = value;
+           
+            }    
+                 count++;         
         }
-
 
         public void MakeTempArray()
         {
@@ -50,7 +49,7 @@ namespace CustomLists
                  TempArray[i] = Array[i];
             }  
        
-            capacity *= capacity;
+            capacity = capacity * 2;
             Array = TempArray;
         }
 
@@ -73,7 +72,6 @@ namespace CustomLists
                 capacity = value;
             }
         }
-
 
         public void RemoveFromList(T value)
         {
@@ -101,12 +99,10 @@ namespace CustomLists
 
         }
 
-
         public IEnumerator GetEnumerator()
         {
             throw new NotImplementedException();
         }
-
 
 
     }
