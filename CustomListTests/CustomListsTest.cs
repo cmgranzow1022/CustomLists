@@ -8,7 +8,7 @@ namespace CustomListTests
     [TestClass]
     public class CustomListTest
     {
-     
+
         [TestMethod]
         public void Add_TwoNums_TwoNumsAddedToList(int value)
         {
@@ -20,7 +20,7 @@ namespace CustomListTests
             customList.Add(20);
 
             //Assert
-            Assert.AreSame(customList.Count, 2); 
+            Assert.AreSame(customList.Count, 2);
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace CustomListTests
 
         [TestMethod]
         public void Add_TwoNumsToExistingList_VerifyCorrectIndexPosition()
-        { 
+        {
             //Arrange
             CustomList<int> customList = new CustomList<int>() { 10, 20 };
 
@@ -124,6 +124,8 @@ namespace CustomListTests
             Assert.AreEqual(customList.Count, 8);
         }
 
+        //test methods for Remove method
+
         [TestMethod]
         public void Remove_OneInt_VerifyCountAfterRemovingOneIntFromExistingList()
         {
@@ -134,7 +136,7 @@ namespace CustomListTests
             customList.Remove(10);
 
             //Assert
-            Assert.AreSame(customList.count, 3);
+            Assert.AreEqual(customList.Count, 3);
         }
 
         [TestMethod]
@@ -145,8 +147,50 @@ namespace CustomListTests
             //Act
             customList.Remove(30);
             //Assert
-            Assert.AreSame(customList.Array[3], 40);
+            Assert.AreEqual(customList.Array[2], 40);
         }
+
+        [TestMethod]
+        public void Remove_TwoStrings_VerifyIndexPositionAfterRemovingFirstTwoStrings()
+        {
+            //Arrange
+            CustomList<string> customList = new CustomList<string>() { };
+
+            //Act
+            customList.Add("lions");
+            customList.Add("tigers");
+            customList.Add("bears");
+            customList.Add("oh");
+            customList.Add("my");
+            customList.Remove("lions");
+            customList.Remove("tigers");
+            //Assert
+            Assert.AreEqual(customList.Array[2], "my");
+        }
+
+
+        [TestMethod]
+        public void Remove_OneString_VerifyCountAfterRemovingString()
+        {
+            //Arrange
+            CustomList<string> customList = new CustomList<string>() { "packers", "vikings", "bears", "cowboys" };
+
+            //Act
+            customList.Remove("bears");
+            //Assert
+            Assert.AreEqual(customList.Count, 3);
+        }
+
+        //public void Remove_OneInt_VerifyIntExistsInArray()
+        //{
+        //    //Arrange
+        //    CustomList<int> customList = new CustomList<int>() { 25, 50, 75, 100 };
+        //    //Act
+        //    bool Example = customList.Remove(50);
+        //    //Assert
+        //    Assert.IsTrue( );
+
+        //}
 
     }
 }

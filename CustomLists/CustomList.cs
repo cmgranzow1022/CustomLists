@@ -28,15 +28,16 @@ namespace CustomLists
 
         public void Add(T value)
         {
-           if(Count == capacity)
+           if(Count > (capacity / 2))
             {
                 MakeTempArray();
+                Array[Count] = value;
             }         
            else
             {
                 Array[Count] = value;
             }    
-               count++;         
+               count++;     
         }
 
         public void MakeTempArray()
@@ -72,9 +73,22 @@ namespace CustomLists
             }
         }
 
-        public void RemoveFromList(T value)
+        public bool Remove(T value)
         {
 
+            for (int i = 0; i < count; i++)
+                if (Array[i].Equals(value))
+                {
+                    while ( i  < count)
+                    {
+                    Array[i] = Array[i + 1];
+                    i++;
+                    }
+                    count--;
+                    return true;
+                }                    
+                
+            return false;  
         }
 
         public void MakeIterable()
