@@ -185,19 +185,32 @@ namespace CustomListTests
             Assert.AreEqual(customList.Count, 3);
         }
 
-        //public void Remove_OneInt_VerifyIntExistsInArray()
-        //{
-        //    //Arrange
-        //    CustomList<int> customList = new CustomList<int>() { 25, 50, 75, 100 };
-        //    //Act
-        //    bool Example = customList.Remove(50);
-        //    //Assert
-        //    Assert.IsTrue( );
-
-        //}
+        [TestMethod]
+        public void Remove_OneInt_VerifyIntExistsInArray()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 25, 50, 75, 100 };
+            //Act
+            bool Example = customList.Remove(50);
+            //Assert
+            Assert.IsTrue(Example);
+        }
 
         [TestMethod]
-        public void Iterate_ListOfInts_VerifyAllIntsCoveredInIteration()
+        public void Remove_OneInt_VerifyIntDoesNotExistInArray()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 25, 50, 75, 100 };
+            //Act
+            bool Example = customList.Remove(60);
+            //Assert
+            Assert.IsFalse(Example);
+        }
+
+
+
+        [TestMethod]
+        public void Iterate_ListOfInts_VerifyAllIntsInIteration()
         {
             //Arrange
             CustomList<int> customList = new CustomList<int>();
@@ -217,6 +230,30 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(result, 10);
         }
+
+        [TestMethod]
+        public void Iterate_ListOfStrings_VerifyAllStringsInIteration()
+        {
+            //Arrange
+            CustomList<string> customList = new CustomList<string>();
+
+            customList.Add("Roscoe");
+            customList.Add("is");
+            customList.Add("pretty");
+            customList.Add("neat");
+            string result = "";
+
+            //Act
+            foreach (string word in customList)
+            {
+                result += word;
+            }
+
+            //Assert
+            Assert.AreEqual(result, "Roscoeisprettyneat" );
+        }
+
+
 
         //[TestMethod]
         //public static void ZipLists_ZipTwoStrings_VerifyCountAfterZip(string ListOne, string ListTwo)
