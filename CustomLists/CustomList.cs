@@ -91,10 +91,20 @@ namespace CustomLists
             return false;  
         }
 
+        public static CustomList<T>ZipList(CustomList<T>ONE, CustomList<T>TWO)
+        {
+            CustomList<T> zippedList = new CustomList<T>();
+
+            return zippedList;
+        }
+
+
         public void MakeIterable()
         {
 
         }
+
+
 
         public void OverrideToString()
         {
@@ -111,12 +121,18 @@ namespace CustomLists
         {
 
         }
-
         public IEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            for(int i = 0 ; i < Array.Length; i++)
+            {
+                yield return Array[i];
+            }
         }
 
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

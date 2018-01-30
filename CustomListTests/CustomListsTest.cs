@@ -173,9 +173,13 @@ namespace CustomListTests
         public void Remove_OneString_VerifyCountAfterRemovingString()
         {
             //Arrange
-            CustomList<string> customList = new CustomList<string>() { "packers", "vikings", "bears", "cowboys" };
+            CustomList<string> customList = new CustomList<string>() { };
 
             //Act
+            customList.Add("packers");
+            customList.Add("vikings");
+            customList.Add("bears");
+            customList.Add("cowboys");
             customList.Remove("bears");
             //Assert
             Assert.AreEqual(customList.Count, 3);
@@ -191,6 +195,46 @@ namespace CustomListTests
         //    Assert.IsTrue( );
 
         //}
+
+        [TestMethod]
+        public void Iterate_ListOfInts_VerifyAllIntsCoveredInIteration()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+    
+            customList.Add(1);
+            customList.Add(2);
+            customList.Add(3);
+            customList.Add(4);
+            int result = 0;
+
+            //Act
+            foreach (int num in customList)
+            {
+                result += num;
+            }
+            
+            //Assert
+            Assert.AreEqual(result, 10);
+        }
+
+        //[TestMethod]
+        //public static void ZipLists_ZipTwoStrings_VerifyCountAfterZip(string ListOne, string ListTwo)
+        //{
+        //    //Arrange
+        //    CustomList<string> customList = new CustomList<string>() { };
+        //    CustomList<string> listOne = new CustomList<string>() { "A", "B", "C" };
+        //    CustomList<string> listTwo = new CustomList<string>() { "1", "2", "3" };
+
+        //    //Act
+        //    customList.ZipList(listOne, listTwo);
+        //    //Assert
+        //    Assert.AreSame(customList.Count, 6);
+        //}
+
+
+
+
 
     }
 }
