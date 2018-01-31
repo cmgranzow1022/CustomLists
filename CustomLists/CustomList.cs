@@ -19,7 +19,7 @@ namespace CustomLists
         public CustomList()
         {
             count = 0;
-            capacity = count + 1;
+            capacity = 5;
             Array = new T[capacity];
             TempArray = new T[0];
         }
@@ -27,15 +27,18 @@ namespace CustomLists
         //member methods&properties
 
         public void Add(T value)
-        { 
+        {
+            if (count == capacity / 2)
+            {
                MakeTempArray();
+            }
                Array[Count] = value;
                count++;     
         }
 
         public void MakeTempArray()
         {
-            capacity = capacity + 1;
+            capacity = capacity * 2;
             T[] TempArray = new T[capacity];
                  
             for (int i = 0; i < count; i++)
@@ -76,30 +79,33 @@ namespace CustomLists
                     count--;
                     return true;
                 }                    
-                
             return false;  
         }
 
-        public static CustomList<T>ZipList(CustomList<T>ONE, CustomList<T>TWO)
+        public static CustomList<T> Zip(CustomList<T> listOne, CustomList<T> listTwo)
         {
             CustomList<T> zippedList = new CustomList<T>();
-
+            zippedList.Array = new T[listOne.Count + listTwo.Count];
+            int z = 0;
+            for (int i = 0; i < listOne.Count; i++)
+            {
+                zippedList.Array[z] = listOne.Array[i];
+                z++;
+                zippedList.Array[z] = listTwo.Array[i];
+                z++;
+            }
             return zippedList;
         }
 
 
-        public void MakeIterable()
+        public override string ToString()
         {
-
-        }
-
-
-
-        public string OverrideToString()
-        {
-            string result = "";
-       
-            return result;
+            string answer = "";
+            foreach (T value in this)
+            {
+                answer += value;
+            }
+            return answer;
         }
 
         public void OverLoadAdditionOperator()
@@ -114,7 +120,7 @@ namespace CustomLists
         }
         public IEnumerator GetEnumerator()
         {
-            for(int i = 0 ; i < Array.Length; i++)
+            for(int i = 0 ; i < Array.Length - (capacity- count); i++)
             {
                 yield return Array[i];
             }

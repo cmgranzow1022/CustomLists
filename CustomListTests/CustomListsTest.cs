@@ -253,39 +253,74 @@ namespace CustomListTests
             Assert.AreEqual(result, "Roscoeisprettyneat");
         }
 
-        /////////////////////////////
-
         [TestMethod]
-            public void OverrideToString_IntToString_VerifyIntToString()
+        public void OverrideToString_IntToString_VerifyIntToString()
         {
             //Arrange
             CustomList<int> customList = new CustomList<int>();
-            string answer = "";
+            string answer;
             customList.Add(3);
             //Act
-            foreach (int num in customList)
-            {
-                answer += num;
-            }
+            answer = customList.ToString();
             //Assert
             Assert.AreEqual(answer, "3");
         }
 
+        [TestMethod]
+        public void ZipLists_ZipTwoStrings_VerifyCountAfterZip()
+        {
+            //Arrange
+            CustomList<string> listOne = new CustomList<string>();
+            CustomList<string> listTwo = new CustomList<string>();
+            listOne.Add("A");
+            listOne.Add("B");
+            listOne.Add("C");
+            listTwo.Add("1");
+            listTwo.Add("2");
+            listTwo.Add("3");
 
-        //[TestMethod]
-        //public static void ZipLists_ZipTwoStrings_VerifyCountAfterZip(string ListOne, string ListTwo)
-        //{
-        //    //Arrange
-        //    CustomList<string> customList = new CustomList<string>() { };
-        //    CustomList<string> listOne = new CustomList<string>() { "A", "B", "C" };
-        //    CustomList<string> listTwo = new CustomList<string>() { "1", "2", "3" };
+            //Act  
+            CustomList<string> customZipList = CustomList<string>.Zip(listOne, listTwo);
 
-        //    //Act
-        //    customList.ZipList(listOne, listTwo);
-        //    //Assert
-        //    Assert.AreSame(customList.Count, 6);
-        //}
+            //Assert
+            Assert.AreEqual(customZipList.Array.Length, 6);
+        }
 
+        [TestMethod]
+        public void ZipLists_ZipTwoStrings_EnsureAccurateOrderOfList()
+        {
+            //Arrange
+            CustomList<string> listOne = new CustomList<string>();
+            CustomList<string> listTwo = new CustomList<string>();
+            listOne.Add("A");
+            listOne.Add("B");
+            listOne.Add("C");
+            listTwo.Add("1");
+            listTwo.Add("2");
+            listTwo.Add("3");
+            //Act
+            CustomList<string> customZipList = CustomList<string>.Zip(listOne, listTwo);
+            //Assert
+            Assert.AreEqual(customZipList.Array[2], "B" );
+        }
+
+        [TestMethod]
+        public void ZipLists_ZipTwoIntLists_EnsureAccurateOrderOfList()
+        {
+            //Arrange
+            CustomList<int> listOne = new CustomList<int>();
+            CustomList<int> listTwo = new CustomList<int>();
+            listOne.Add(1);
+            listOne.Add(3);
+            listOne.Add(5);
+            listTwo.Add(2);
+            listTwo.Add(4);
+            listTwo.Add(6);
+            //Act
+            CustomList<int> customZipList = CustomList<int>.Zip(listOne, listTwo);
+            //Assert
+            Assert.AreEqual(customZipList.Array[3], 4);
+        }
 
 
 
