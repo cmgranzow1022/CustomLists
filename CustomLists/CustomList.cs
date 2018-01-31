@@ -10,6 +10,7 @@ namespace CustomLists
    public class CustomList<T> : IEnumerable
     {
         //member variables
+        public T value;
         public int count;
         public int capacity;
         public T[] Array;
@@ -108,13 +109,25 @@ namespace CustomLists
             return answer;
         }
 
-        public void OverLoadAdditionOperator()
+        public static CustomList<T>OverloadAdditionOperator(CustomList<T> listOne, CustomList<T> listTwo)
         {
-
-        
+            CustomList<T> resultList = new CustomList<T>();
+            resultList.Array = new T[listOne.Count + listTwo.Count];
+            int j = 0;
+            for (int i = 0; i < listOne.Count; i++)
+            {
+                resultList.Array[j] = listOne.Array[i];
+                j++;
+            }
+            for (int i = 0; i < listTwo.Count; i++)
+            {
+                resultList.Array[j] = listTwo.Array[i];
+                j++;
+            }
+            return resultList;
         }
 
-        public void OverLoadSubtractionOperator()
+        public void OverloadSubtractionOperator()
         {
 
         }

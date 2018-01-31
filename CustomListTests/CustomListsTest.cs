@@ -322,6 +322,63 @@ namespace CustomListTests
             Assert.AreEqual(customZipList.Array[3], 4);
         }
 
+        [TestMethod]
+        public void OverLoadPlus_TwoStringLists_VerifyLengthOfNewList()
+        {
+            //Arrange
+            CustomList<string> strListOne = new CustomList<string>();
+            CustomList<string> strListTwo = new CustomList<string>();
+            strListOne.Add("lions");
+            strListOne.Add("tigers");
+            strListOne.Add("bears");
+            strListTwo.Add("oh");
+            strListTwo.Add("my");
+
+            //Act
+            CustomList<string> strResult = CustomList<string>.OverloadAdditionOperator(strListOne, strListTwo);
+
+            //Assert
+            Assert.AreEqual(strResult.Array.Length, 5);
+        }
+
+        [TestMethod]
+        public void OverLoadPlus_TwoStringLists_VerifyIndexPositionOfNewList()
+        {
+            //Arrange
+            CustomList<string> strListOne = new CustomList<string>();
+            CustomList<string> strListTwo = new CustomList<string>();
+            strListOne.Add("lions");
+            strListOne.Add("tigers");
+            strListOne.Add("bears");
+            strListTwo.Add("oh");
+            strListTwo.Add("my");
+
+            //Act
+            CustomList<string> strResult = CustomList<string>.OverloadAdditionOperator(strListOne, strListTwo);
+
+            //Assert
+            Assert.AreEqual(strResult.Array[3], "oh");
+        }
+
+        [TestMethod]
+        public void OverLoadPlus_TwoIntLists_VerifyIndexPositionOfNewList()
+        {
+            //Arrange
+            CustomList<int> intListOne = new CustomList<int>();
+            CustomList<int> intListTwo = new CustomList<int>();
+            intListOne.Add(10);
+            intListOne.Add(20);
+            intListOne.Add(30);
+            intListTwo.Add(40);
+            intListTwo.Add(50);
+
+            //Act
+            CustomList<int> intResult = CustomList<int>.OverloadAdditionOperator(intListOne, intListTwo);
+
+            //Assert
+            Assert.AreEqual(intResult.Array[4], 50);
+        }
+
 
 
 
