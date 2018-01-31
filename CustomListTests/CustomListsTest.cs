@@ -214,7 +214,7 @@ namespace CustomListTests
         {
             //Arrange
             CustomList<int> customList = new CustomList<int>();
-    
+
             customList.Add(1);
             customList.Add(2);
             customList.Add(3);
@@ -226,7 +226,7 @@ namespace CustomListTests
             {
                 result += num;
             }
-            
+
             //Assert
             Assert.AreEqual(result, 10);
         }
@@ -250,9 +250,26 @@ namespace CustomListTests
             }
 
             //Assert
-            Assert.AreEqual(result, "Roscoeisprettyneat" );
+            Assert.AreEqual(result, "Roscoeisprettyneat");
         }
 
+        /////////////////////////////
+
+        [TestMethod]
+            public void OverrideToString_IntToString_VerifyIntToString()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            string answer = "";
+            customList.Add(3);
+            //Act
+            foreach (int num in customList)
+            {
+                answer += num;
+            }
+            //Assert
+            Assert.AreEqual(answer, "3");
+        }
 
 
         //[TestMethod]

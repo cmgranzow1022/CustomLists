@@ -19,7 +19,7 @@ namespace CustomLists
         public CustomList()
         {
             count = 0;
-            capacity = 5;
+            capacity = count + 1;
             Array = new T[capacity];
             TempArray = new T[0];
         }
@@ -27,29 +27,22 @@ namespace CustomLists
         //member methods&properties
 
         public void Add(T value)
-        {
-           if(Count > (capacity / 2))
-            {
-                MakeTempArray();
-                Array[Count] = value;
-            }         
-           else
-            {
-                Array[Count] = value;
-            }    
+        { 
+               MakeTempArray();
+               Array[Count] = value;
                count++;     
         }
 
         public void MakeTempArray()
         {
-            T[] TempArray = new T[capacity * 2];
+            capacity = capacity + 1;
+            T[] TempArray = new T[capacity];
                  
             for (int i = 0; i < count; i++)
             {
                  TempArray[i] = Array[i];
             }  
-       
-            capacity = capacity * 2;
+      
             Array = TempArray;
         }
 
@@ -66,10 +59,6 @@ namespace CustomLists
             get
             {
                 return capacity;
-            }
-            set
-            {
-                capacity = value;
             }
         }
 
@@ -106,9 +95,11 @@ namespace CustomLists
 
 
 
-        public void OverrideToString()
+        public string OverrideToString()
         {
-
+            string result = "";
+       
+            return result;
         }
 
         public void OverLoadAdditionOperator()
