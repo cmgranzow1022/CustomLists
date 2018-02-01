@@ -109,7 +109,7 @@ namespace CustomLists
             return answer;
         }
 
-        public static CustomList<T>OverloadAdditionOperator(CustomList<T> listOne, CustomList<T> listTwo)
+        public static CustomList<T> operator +(CustomList<T> listOne, CustomList<T> listTwo)
         {
             CustomList<T> resultList = new CustomList<T>();
             resultList.Array = new T[listOne.Count + listTwo.Count];
@@ -125,20 +125,43 @@ namespace CustomLists
                 j++;
             }
             return resultList;
+
+
         }
 
-        public void OverloadSubtractionOperator()
+        public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)
         {
+            bool result = true;
+            CustomList<T> resultList = new CustomList<T>();
 
+            for (int i = 0; i < listOne.count; i++)
+            {
+                result = true;
+                for (int j = 0; j < listTwo.count; j++)
+                {
+
+                    if (listOne.Array[i].Equals(listTwo.Array[j]))
+                    {
+                        result = false;
+                        break;
+                    }
+                }
+
+                if (result == true)
+                {
+                    resultList.Add(listOne.Array[i]);
+                }
+            }
+           return  resultList;
         }
+
         public IEnumerator GetEnumerator()
         {
-            for(int i = 0 ; i < Array.Length - (capacity- count); i++)
+            for(int i = 0 ; i < Array.Length - (capacity - count); i++)
             {
                 yield return Array[i];
             }
         }
-
 
         IEnumerator IEnumerable.GetEnumerator()
         {
@@ -146,3 +169,5 @@ namespace CustomLists
         }
     }
 }
+
+

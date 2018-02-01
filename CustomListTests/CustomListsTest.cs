@@ -335,7 +335,8 @@ namespace CustomListTests
             strListTwo.Add("my");
 
             //Act
-            CustomList<string> strResult = CustomList<string>.OverloadAdditionOperator(strListOne, strListTwo);
+            CustomList<string> strResult = new CustomList<string>();
+            strResult = strListOne + strListTwo;
 
             //Assert
             Assert.AreEqual(strResult.Array.Length, 5);
@@ -354,7 +355,8 @@ namespace CustomListTests
             strListTwo.Add("my");
 
             //Act
-            CustomList<string> strResult = CustomList<string>.OverloadAdditionOperator(strListOne, strListTwo);
+            CustomList<string> strResult = new CustomList<string>();
+            strResult = strListOne + strListTwo;
 
             //Assert
             Assert.AreEqual(strResult.Array[3], "oh");
@@ -373,14 +375,69 @@ namespace CustomListTests
             intListTwo.Add(50);
 
             //Act
-            CustomList<int> intResult = CustomList<int>.OverloadAdditionOperator(intListOne, intListTwo);
+            CustomList<int> intResult = new CustomList<int>();
+            intResult = intListOne + intListTwo;
 
             //Assert
             Assert.AreEqual(intResult.Array[4], 50);
         }
 
+        [TestMethod]
+        public void OverloadSubtraction_TwoStringLists_VerifyLengthOfNewList()
+        {
+            //Arrange
+            CustomList<string> strListOne = new CustomList<string>() ;
+            CustomList<string> strListTwo = new CustomList<string>() ;
+            strListOne.Add("red");
+            strListOne.Add("yellow");
+            strListOne.Add("green");
+            strListOne.Add("blue");
+            strListTwo.Add("red");
+            strListTwo.Add("green");
+            //Act
+            CustomList<string> strResult = new CustomList<string>();
+            strResult = strListOne - strListTwo;
 
+            //Assert
+            Assert.AreEqual(strResult.count, 2);
+        }
 
+        [TestMethod]
+        public void OverloadSubtraction_TwoStringLists_VerifyIndexOfValueInNewStrList()
+        {
+            //Arrange
+            CustomList<string> strListOne = new CustomList<string>();
+            CustomList<string> strListTwo = new CustomList<string>();
+            strListOne.Add("red");
+            strListOne.Add("yellow");
+            strListOne.Add("green");
+            strListOne.Add("blue");
+            strListTwo.Add("red");
+            strListTwo.Add("green");
+            //Act
+            CustomList<string> strResult = new CustomList<string>();
+            strResult = strListOne - strListTwo;
+            //Assert
+            Assert.AreEqual(strResult.Array[0], "yellow");
+        }
 
+        [TestMethod]
+        public void OverloadSubtraction_TwoIntLists_VerifyIndexOfValueInNewIntList()
+        {
+            //Arrange
+            CustomList<int> intListOne = new CustomList<int>();
+            CustomList<int> intListTwo = new CustomList<int>();
+            intListOne.Add(10);
+            intListOne.Add(20);
+            intListOne.Add(30);
+            intListOne.Add(40);
+            intListTwo.Add(10);
+            intListTwo.Add(20);
+            //Act
+            CustomList<int> intResult = new CustomList<int>();
+            intResult = intListOne - intListTwo;
+            //Assert
+            Assert.AreEqual(intResult.Array[0], 30);
+        }
     }
 }
