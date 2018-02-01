@@ -9,14 +9,12 @@ namespace CustomLists
 {
    public class CustomList<T> : IEnumerable
     {
-        //member variables
         public T value;
         public int count;
         public int capacity;
         public T[] Array;
         public T[] TempArray;
 
-        //ctor
         public CustomList()
         {
             count = 0;
@@ -24,8 +22,6 @@ namespace CustomLists
             Array = new T[capacity];
             TempArray = new T[0];
         }
-
-        //member methods&properties
 
         public void Add(T value)
         {
@@ -98,7 +94,6 @@ namespace CustomLists
             return zippedList;
         }
 
-
         public override string ToString()
         {
             string answer = "";
@@ -125,8 +120,6 @@ namespace CustomLists
                 j++;
             }
             return resultList;
-
-
         }
 
         public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)

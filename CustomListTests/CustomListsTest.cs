@@ -267,6 +267,24 @@ namespace CustomListTests
         }
 
         [TestMethod]
+        public void OverrideToString_ListofStrToString_VerifyStrToString()
+        {
+            //Arrange
+            CustomList<string> customList = new CustomList<string>();
+            string answer;
+            customList.Add("Super");
+            customList.Add("cali");
+            customList.Add("fragilistic");
+            customList.Add("expi");
+            customList.Add("ali");
+            customList.Add("docious");
+            //Act
+            answer = customList.ToString();
+            //Assert
+            Assert.AreEqual(answer, "Supercalifragilisticexpialidocious");
+        }
+
+        [TestMethod]
         public void ZipLists_ZipTwoStrings_VerifyCountAfterZip()
         {
             //Arrange
